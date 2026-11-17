@@ -4,6 +4,7 @@ import { subjectByKey } from "@/lib/isc";
 import { RESOURCE_KINDS, type ResourceKind } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 const MAX_BYTES = 4 * 1024 * 1024;
 const TYPES = ["application/pdf", "image/jpeg", "image/png", "image/webp"];

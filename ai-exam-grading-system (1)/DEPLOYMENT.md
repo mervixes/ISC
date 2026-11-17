@@ -200,9 +200,10 @@ fails, and long papers would time out at 60 s.
 
 You do not need to change these; this is so you know what they are.
 
-- `vercel.json` gives the marking route 300 s and 2 GB of memory, the tutor and question generator
-  their own limits, and runs a **daily cron against `/api/health`**. That cron exists because a
-  Supabase free project pauses after 7 days without a query — one request a day keeps it awake.
+- Route files export their own `maxDuration` values, which Next.js passes to Vercel. `vercel.json`
+  runs a **daily cron against `/api/health`**. That cron exists because a Supabase free project
+  pauses after 7 days without a query — one request a day keeps it awake. Configure function memory
+  in Vercel's Functions settings if needed.
 - `src/app/api/attempts/[id]/grade/route.ts` exports `maxDuration = 300` and wraps the marking job
   in `after()` from `next/server`, which maps to Vercel's `waitUntil`. That is what stops the
   function from being frozen the moment the HTTP response is sent, so marking continues after the

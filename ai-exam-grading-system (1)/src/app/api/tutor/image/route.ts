@@ -2,7 +2,7 @@ import { AiError } from "@/lib/ai";
 import { getAiConfigs } from "@/lib/keys";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 180;
+export const maxDuration = 120;
 
 /**
  * Image generation for the tutor. Uses whichever of the student's providers can generate an

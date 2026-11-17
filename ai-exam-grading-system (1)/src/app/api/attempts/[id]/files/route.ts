@@ -5,6 +5,7 @@ import { parseId } from "@/lib/attempts";
 import { extractQuestions } from "@/lib/extract";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 type Ctx = { params: Promise<{ id: string }> };
 
