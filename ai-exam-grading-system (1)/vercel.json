@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "src/app/api/attempts/[id]/grade/route.ts": { "maxDuration": 300, "memory": 2048 },
+    "src/app/api/tutor/route.ts": { "maxDuration": 300, "memory": 1024 },
+    "src/app/api/practice/type/route.ts": { "maxDuration": 180, "memory": 1024 },
+    "src/app/api/tutor/image/route.ts": { "maxDuration": 120, "memory": 1024 },
+    "src/app/api/attempts/[id]/files/route.ts": { "maxDuration": 60, "memory": 1024 },
+    "src/app/api/resources/route.ts": { "maxDuration": 60, "memory": 1024 }
+  },
+  "crons": [
+    {
+      "path": "/api/health",
+      "schedule": "0 3 * * *"
+    }
+  ]
+}

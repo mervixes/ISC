@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-paper: #faf8f3;
+  --color-card: #ffffff;
+  --color-wash: #f3efe6;
+  --color-line: #e4dfd3;
+  --color-ink: #17150f;
+  --color-soft: #3d3a33;
+  --color-muted: #6b665c;
+
+  --color-pen: #c8321e;
+  --color-pen-dark: #a92815;
+  --color-pen-wash: #fbeeeb;
+  --color-pass: #1f7a4d;
+  --color-pass-wash: #e9f4ee;
+  --color-warn: #8f5a0a;
+  --color-warn-wash: #fbf3e2;
+}
+
+html {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #f4d9d3;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium whitespace-nowrap transition-colors select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  .btn-primary {
+    @apply bg-ink text-paper hover:bg-soft;
+  }
+  .btn-pen {
+    @apply bg-pen text-white hover:bg-pen-dark;
+  }
+  .btn-ghost {
+    @apply border border-line bg-card text-ink hover:bg-wash;
+  }
+  .btn-sm {
+    @apply h-9 px-4 text-sm;
+  }
+  .btn-lg {
+    @apply h-13 px-7 text-base;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-card;
+  }
+  .input {
+    @apply h-11 w-full rounded-xl border border-line bg-card px-3.5 text-[15px] text-ink placeholder:text-muted focus:border-ink focus:outline-1 focus:outline-ink;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-soft;
+  }
+  .kicker {
+    @apply text-xs font-medium tracking-[0.14em] text-muted uppercase;
+  }
+  .display {
+    @apply font-serif leading-[1.02] font-normal tracking-[-0.01em];
+  }
+  .link {
+    @apply underline decoration-line decoration-2 underline-offset-4 hover:decoration-ink;
+  }
+}
+
+.select {
+  appearance: none;
+  padding-right: 2.25rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236b665c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+/* KaTeX: sit comfortably inside body text and never push the page sideways. */
+.katex {
+  font-size: 1.1em;
+}
+.katex-display {
+  margin: 0.6em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+}
+.rich {
+  overflow-wrap: anywhere;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-rise {
+  animation: rise 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
